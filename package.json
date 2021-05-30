@@ -10,9 +10,8 @@
   "author": "Catalin Tudose",
   "license": "free",
   "devDependencies": {
-    "lite-server": "^2.5.4"
+    "lite-server": "^2.6.1",
+    "mocha": "^7.2.0"
   },
-  "dependencies": {
-    "mocha": "^7.0.1"
-  }
+  "dependencies": {}
 }
