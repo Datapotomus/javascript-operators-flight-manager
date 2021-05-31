@@ -12,21 +12,21 @@ function Passengers() {
         }
     }
     function distributeAllSeatsToAllPassengers(vipPassengers, regularPassengers , numberOfFlights , businessSeatsPerFlight , economySeatsPerFlight) {
-        let seatDistrobution = {
-            vipPassengersWithBusinessSeats: 0,
-            VIPpassengerswitheconomyseats: 0,
-            regularpassengerswithbusinessseats: 0,
-            regularpassengerswitheconomyseats: 0,
-        } 
         
-        let remainingVIPSeats = businessSeatsPerFlight;
+        let distributedPassengers = new Object();
+        distributedPassengers.vipPassengersWithBusinessSeats = 0;
+        distributedPassengers.vipPassengersWithEconomySeats = 0;
+        distributedPassengers.regularPassengersWithBusinessSeats = 0;
+        distributedPassengers.regularPassengersWithEconomySeats = 0;
+            
+        let remainingVIPSeats = businessSeatsPerFlight * numberOfFlights;
         let remainingVIPPassengers = vipPassengers;
-        let remainingEconomySeats = economySeatsPerFlight;
+        let remainingEconomySeats = economySeatsPerFlight * numberOfFlights;
         let remainingRegularPassengers = regularPassengers;
     
         for (let index = remainingVIPSeats; index > 0; index--) {
             if (remainingVIPPassengers > 0){
-                seatDistrobution.vipPassengersWithBusinessSeats++
+                distributedPassengers.vipPassengersWithBusinessSeats++
                 remainingVIPSeats--
                 remainingVIPPassengers--
             } else{
@@ -35,7 +35,7 @@ function Passengers() {
         }
         for (let index = remainingVIPPassengers; index > 0; index--) {
             if (remainingEconomySeats > 0) {
-                seatDistrobution.VIPpassengerswitheconomyseats++
+                distributedPassengers.vipPassengersWithEconomySeats++
                 remainingVIPPassengers--
                 remainingEconomySeats--
             } else {
@@ -45,7 +45,7 @@ function Passengers() {
         }
         for (let index = remainingVIPSeats; index > 0 ; index--) {
             if (remainingRegularPassengers > 0){
-                seatDistrobution.regularpassengerswithbusinessseats++
+                distributedPassengers.regularPassengersWithBusinessSeats++
                 remainingVIPSeats--
                 remainingRegularPassengers--
             } else{
@@ -56,7 +56,7 @@ function Passengers() {
     
         for (let index = remainingEconomySeats; index > 0; index--) {
             if (remainingRegularPassengers > 0){
-                seatDistrobution.regularpassengerswitheconomyseats++
+                distributedPassengers.regularPassengersWithEconomySeats++
                 remainingEconomySeats--
                 remainingRegularPassengers--
             } else{
@@ -64,8 +64,10 @@ function Passengers() {
             }
             
         }
-        return seatDistrobution;
+
+        return distributedPassengers;
     }
+    
 
     return {checkFlightCapacity, distributeAllSeatsToAllPassengers};
 }
