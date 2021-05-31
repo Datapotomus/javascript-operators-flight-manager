@@ -15,7 +15,14 @@ function Util() {
         }
         return totalPassengers
     }
-    return {calculateTotalDistributedPassengers, calculateTotalNumberOfPassengers}
+    function checkInput(input) {
+        if (input === ""){
+            throw new Error("The input should not be empty")
+        } else if (typeof input !== 'number'){
+            throw new Error("The input should be a number")
+        } 
+    }
+    return {calculateTotalDistributedPassengers, calculateTotalNumberOfPassengers, checkInput}
 }
 module.exports = Util();
 
