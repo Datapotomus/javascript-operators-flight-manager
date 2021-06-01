@@ -63,8 +63,9 @@ function onCalculateFinalPrice() {
         Util().checkInput(variationPassengerType);
         Util().checkInput(variationFlightType);
 
-        let finalPrice = Prices().calculateFinalPrice(basePrice, variationPassengerType, variationFlightType);
-
+        let finalPrice = Prices().calculateFinalPrice(parseInt(basePrice), variationPassengerType, variationFlightType);
+        console.log(basePrice, variationPassengerType, variationFlightType)
+        console.log(finalPrice)
         document.getElementById("calculatedFinalPrice").innerHTML = finalPrice;
 }
 

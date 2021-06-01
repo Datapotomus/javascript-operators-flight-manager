@@ -1,8 +1,12 @@
 function Prices() {
     function calculateFinalPrice(basePrice, passengerType, flightType) {
-        let passengerVaritation = basePrice + (basePrice * (passengerType/100))
-        let finalPrice = passengerVaritation + (passengerVaritation * (flightType/100))
-        return finalPrice.toFixed(2);
+        let passengerPercentage = basePrice * (passengerType/100)
+        let passengerVaritation = basePrice + passengerPercentage
+        let calculatedPrice = passengerVaritation + (passengerVaritation * (flightType/100))
+        return parseFloat(calculatedPrice).toFixed(2);
+    }
+    function calculateDefaultFinalPrice(basePrice, passengerType, flightType) {
+        
     }
     return {calculateFinalPrice};
 }

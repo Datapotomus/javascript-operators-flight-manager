@@ -18,7 +18,7 @@ function Util() {
     function checkInput(input) {
         if (input === ""){
             throw new Error("The input should not be empty")
-        } else if (typeof input !== 'number'){
+        } else if (isNaN(input)){
             throw new Error("The input should be a number")
         } 
     }
