@@ -1,3 +1,4 @@
+"use strict"
 function Util() {
     function calculateTotalDistributedPassengers(distributedPassengers) {
 
@@ -22,7 +23,27 @@ function Util() {
             throw new Error("The input should be a number")
         } 
     }
-    return {calculateTotalDistributedPassengers, calculateTotalNumberOfPassengers, checkInput}
+    function calculateTotalDistance(distances) {
+      let distanceArray = Array.from(distances)
+      let totalDistance =0;
+    
+      for (let index = 0; index < distanceArray.length; index++) {
+        const element = distanceArray[index];
+        if (element > 0) {
+          totalDistance += element
+          
+        }
+      }
+      return totalDistance
+    }
+    function calculateBonusPoints(businessSeatDistances, economySeatDistances, businessBonusPercent, economyBonusPercent) {
+      
+      let businessPoints = calculateTotalDistance(businessSeatDistances) * (businessBonusPercent/100)
+      let economyPoints = calculateTotalDistance(economySeatDistances) * (economyBonusPercent/100)
+      let totalBonusPoints = businessPoints + economyPoints
+      return totalBonusPoints
+    }
+    return {calculateTotalDistributedPassengers, calculateTotalNumberOfPassengers, checkInput, calculateTotalDistance, calculateBonusPoints}
 }
 module.exports = Util();
 

@@ -27,7 +27,8 @@ function onCalculateTotalFinalPrice(object) {
                   Prices().calculateTotalFinalPrice(document.getElementById('regularPassengersEconomyFlight').value,
                           'regular', 'economy', 
                            document.getElementById('regularPassengersEconomyFlightBasePrice').value);
-        break;
+        console.log(document.getElementById('regularPassengersEconomyFlightTotalPrice').innerHTML)
+                           break;
         case 'vipeconomy':
             Util().checkInput(document.getElementById('vipPassengersEconomyFlightBasePrice').value);
             Util().checkInput(document.getElementById('vipPassengersEconomyFlight').value);
@@ -56,16 +57,14 @@ function onCalculateTotalFinalPrice(object) {
 }
 
 function onCalculateFinalPrice() {
-        let basePrice = document.getElementById("basePrice").value;
-        let variationPassengerType = document.getElementById("variationPassengerType").value;
-        let variationFlightType = document.getElementById("variationFlightType").value;
+        let basePrice = parseInt(document.getElementById("basePrice").value);
+        let variationPassengerType = parseInt(document.getElementById("variationPassengerType").value);
+        let variationFlightType = parseInt(document.getElementById("variationFlightType").value);
         Util().checkInput(basePrice);
         Util().checkInput(variationPassengerType);
         Util().checkInput(variationFlightType);
 
-        let finalPrice = Prices().calculateFinalPrice(parseInt(basePrice), variationPassengerType, variationFlightType);
-        console.log(basePrice, variationPassengerType, variationFlightType)
-        console.log(finalPrice)
+        let finalPrice = Prices().calculateFinalPrice(basePrice, variationPassengerType, variationFlightType);
         document.getElementById("calculatedFinalPrice").innerHTML = finalPrice;
 }
 
@@ -141,7 +140,7 @@ function onCalculateBonusPoints() {
     let businessBonus = parseInt(document.getElementById("businessBonus").value);
     let economyBonus = parseInt(document.getElementById("economyBonus").value);
 
-    calculatedBonusPoints = Util().calculateBonusPoints(businessDistancesArray, economyDistancesArray, 
+    let calculatedBonusPoints = Util().calculateBonusPoints(businessDistancesArray, economyDistancesArray, 
                                                               businessBonus, economyBonus);
 
     document.getElementById("calculatedBonusPoints").innerHTML = "Bonus points: " + calculatedBonusPoints;
